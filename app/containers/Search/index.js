@@ -16,6 +16,7 @@ import Helmet from 'react-helmet';
 import FontAwesome from 'react-fontawesome';
 import { createStructuredSelector } from 'reselect';
 import aggToField from '../../utils/aggToField';
+import { getAggregatorQueryString } from '../../utils/queryFormatter';
 import SearchWrapper from '../../components/SearchWrapper';
 import AuthButton from '../../components/AuthButton';
 import AggDropdownGroup from '../../components/AggDropdownGroup';
@@ -44,6 +45,9 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
   }
 
   onSearchChange(e) {
+    console.log(this.getExportUrl());
+    console.log(this.query);
+    console.log(this.props.Search.aggsSent);
     this.query = e.target.value;
   }
 
@@ -54,6 +58,15 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
 
   getAggs(agg) {
     return this.props.onAggViewed({ ...actions.getSearchParams(this.props), agg });
+  }
+
+  getExportUrl() {
+    let rootUrl = '/api/studies/search/export/file.xlsx';
+    const queryString = getAggregatorQueryString(this.query, this.props.Search.aggsSent);
+    if (queryString) {
+      rootUrl += `?${queryString}`;
+    }
+    return rootUrl;
   }
 
   doSearch(props, query) {
@@ -188,6 +201,7 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
                     {' '}
                     <FontAwesome name="search" />
                   </Button>
+                  <Button href={this.getExportUrl()}>Download Excel</Button>
                 </Form>
               </Col>
             </Row>
