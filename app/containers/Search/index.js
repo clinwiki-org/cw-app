@@ -45,9 +45,6 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
   }
 
   onSearchChange(e) {
-    console.log(this.getExportUrl());
-    console.log(this.query);
-    console.log(this.props.Search.aggsSent);
     this.query = e.target.value;
   }
 
