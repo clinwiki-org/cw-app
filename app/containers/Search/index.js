@@ -61,7 +61,7 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
   }
 
   getExportUrl() {
-    let rootUrl = '/api/studies/search/export/file.xlsx';
+    let rootUrl = '/api/studies/search/export/aact-studies-export.xlsx';
     const queryString = getAggregatorQueryString(this.query, this.props.Search.aggsSent);
     if (queryString) {
       rootUrl += `?${queryString}`;
