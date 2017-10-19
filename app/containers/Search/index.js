@@ -58,7 +58,7 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
 
   cellForField(field, opts = {}) {
     return ({ rowIndex, ...props }) => (
-      <Cell {...props} className="text-center">
+      <Cell {...props} className="text-left">
         {this.cellInner(field, this.props.Search.rows[rowIndex], opts)}
       </Cell>
     );
@@ -127,7 +127,7 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
   headerCell(field, passedKey = null) {
     const key = passedKey || field;
     return (
-      <Cell className="text-center">
+      <Cell className="text-left">
         {field}
         {' '}
         <FontAwesome
