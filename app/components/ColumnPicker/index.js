@@ -27,7 +27,7 @@ function ColumnPicker(props) {
       shouldCloseOnOverlayClick
     >
       <Grid>
-        <Row className="text-center">
+        <Row className="text-left">
           <h3>Choose Your Columns</h3>
         </Row>
         <Row style={{ textTransform: 'capitalize' }}>
